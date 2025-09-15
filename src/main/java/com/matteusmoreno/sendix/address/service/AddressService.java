@@ -2,7 +2,6 @@ package com.matteusmoreno.sendix.address.service;
 
 import com.matteusmoreno.sendix.address.entity.Address;
 import com.matteusmoreno.sendix.client.via_cep.ViaCepClient;
-import com.matteusmoreno.sendix.client.via_cep.ViaCepResponse;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -14,18 +13,16 @@ public class AddressService {
         this.viaCepClient = viaCepClient;
     }
 
-    public Address createAddress(String zipCode, String number, String complement) {
-        ViaCepResponse viaCepResponse = viaCepClient.getAddressByZipcode(zipCode);
-
+    public Address createAddressObject(String zipCode, String addressNumber, String complement) {
+        var viaCepResponse = viaCepClient.getAddressByZipcode(zipCode);
         return Address.builder()
                 .zipCode(viaCepResponse.cep())
                 .street(viaCepResponse.logradouro())
-                .number(number)
+                .number(addressNumber)
                 .complement(complement)
                 .neighborhood(viaCepResponse.bairro())
                 .city(viaCepResponse.localidade())
                 .state(viaCepResponse.uf())
                 .build();
-
     }
 }

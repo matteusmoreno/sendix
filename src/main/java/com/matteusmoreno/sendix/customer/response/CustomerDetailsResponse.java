@@ -6,15 +6,13 @@ import com.matteusmoreno.sendix.customer.entity.Customer;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.UUID;
 
 public record CustomerDetailsResponse(
-        UUID customerId,
+        String customerId,
         String name,
         String email,
         String phoneNumber,
         LocalDate birthDate,
-        Integer age,
         List<AddressDetailsResponse> addresses,
         LocalDateTime createdAt,
         LocalDateTime updatedAt,
@@ -28,7 +26,6 @@ public record CustomerDetailsResponse(
                     customer.getEmail(),
                     customer.getPhoneNumber(),
                     customer.getBirthDate(),
-                    customer.getAge(),
                     customer.getAddresses().stream().map(AddressDetailsResponse::new).toList(),
                     customer.getCreatedAt(),
                     customer.getUpdatedAt(),

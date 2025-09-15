@@ -1,4 +1,5 @@
-package com.matteusmoreno.sendix.customer.entity;
+package com.matteusmoreno.sendix.store;
+
 
 import com.matteusmoreno.sendix.address.entity.Address;
 import lombok.*;
@@ -6,26 +7,26 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Document(collection = "customers")
+@Document(collection = "stores")
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 @Getter @Setter
-public class Customer {
+public class Store {
 
     @Id
-    private String customerId;
+    private String storeId;
     private String name;
+    @Indexed(unique = true)
+    private String cnpj;
     @Indexed(unique = true)
     private String email;
     @Indexed(unique = true)
     private String phoneNumber;
-    private LocalDate birthDate;
     private List<Address> addresses = new ArrayList<>();
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

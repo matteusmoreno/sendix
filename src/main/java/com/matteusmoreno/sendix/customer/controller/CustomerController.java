@@ -4,6 +4,7 @@ import com.matteusmoreno.sendix.customer.request.CreateCustomerRequest;
 import com.matteusmoreno.sendix.customer.entity.Customer;
 import com.matteusmoreno.sendix.customer.response.CustomerDetailsResponse;
 import com.matteusmoreno.sendix.customer.service.CustomerService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -24,7 +25,7 @@ public class CustomerController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<CustomerDetailsResponse> create(@RequestBody CreateCustomerRequest request, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<CustomerDetailsResponse> create(@RequestBody @Valid CreateCustomerRequest request, UriComponentsBuilder uriBuilder) {
         Customer customer = customerService.createCustomer(request);
         URI uri = uriBuilder.path("/customers/create/{id}").buildAndExpand(customer.getCustomerId()).toUri();
         return ResponseEntity.created(uri).body(new CustomerDetailsResponse(customer));

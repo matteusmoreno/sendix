@@ -1,9 +1,6 @@
 package com.matteusmoreno.sendix.customer.request;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
 
@@ -17,7 +14,7 @@ public record CreateCustomerRequest(
         @Pattern(regexp = "\\(\\d{2}\\)\\d{4,5}-\\d{4}", message = "Phone addressNumber must be in the format (xx)xxxxx-xxxx")
         String phoneNumber,
         @NotNull(message = "Birth date is required")
-        @Pattern(regexp = "\\d{4}-\\d{2}-\\d{2}", message = "Birth date must be in the format yyyy-MM-dd")
+        @Past(message = "Birth date must be in the past")
         LocalDate birthDate,
         @Pattern(regexp = "\\d{5}-\\d{3}", message = "Zip code must be in the format xxxxx-xxx")
         String zipCode,

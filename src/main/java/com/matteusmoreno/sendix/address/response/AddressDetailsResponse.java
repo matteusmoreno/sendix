@@ -5,7 +5,6 @@ import com.matteusmoreno.sendix.address.entity.Address;
 import java.util.UUID;
 
 public record AddressDetailsResponse(
-        UUID addressId,
         String street,
         String number,
         String complement,
@@ -16,7 +15,6 @@ public record AddressDetailsResponse(
 
     public AddressDetailsResponse(Address address) {
         this(
-                address.getAddressId(),
                 address.getStreet(),
                 address.getNumber(),
                 address.getComplement(),
