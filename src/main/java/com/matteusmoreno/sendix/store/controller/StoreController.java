@@ -1,5 +1,9 @@
-package com.matteusmoreno.sendix.store;
+package com.matteusmoreno.sendix.store.controller;
 
+import com.matteusmoreno.sendix.store.entity.Store;
+import com.matteusmoreno.sendix.store.service.StoreService;
+import com.matteusmoreno.sendix.store.request.CreateStoreRequest;
+import com.matteusmoreno.sendix.store.response.StoreDetailsResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

@@ -1,7 +1,10 @@
-package com.matteusmoreno.sendix.store;
+package com.matteusmoreno.sendix.store.service;
 
 import com.matteusmoreno.sendix.address.entity.Address;
 import com.matteusmoreno.sendix.address.service.AddressService;
+import com.matteusmoreno.sendix.store.entity.Store;
+import com.matteusmoreno.sendix.store.repository.StoreRepository;
+import com.matteusmoreno.sendix.store.request.CreateStoreRequest;
 import com.matteusmoreno.sendix.utils.Utils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;

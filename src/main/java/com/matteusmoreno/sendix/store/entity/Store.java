@@ -1,4 +1,4 @@
-package com.matteusmoreno.sendix.store;
+package com.matteusmoreno.sendix.store.entity;
 
 
 import com.matteusmoreno.sendix.address.entity.Address;

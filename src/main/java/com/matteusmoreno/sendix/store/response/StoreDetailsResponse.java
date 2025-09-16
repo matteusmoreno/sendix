@@ -1,6 +1,7 @@
-package com.matteusmoreno.sendix.store;
+package com.matteusmoreno.sendix.store.response;
 
 import com.matteusmoreno.sendix.address.response.AddressDetailsResponse;
+import com.matteusmoreno.sendix.store.entity.Store;
 
 import java.time.LocalDateTime;
 import java.util.List;

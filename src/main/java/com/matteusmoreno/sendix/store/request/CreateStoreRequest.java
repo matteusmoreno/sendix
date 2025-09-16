@@ -1,4 +1,4 @@
-package com.matteusmoreno.sendix.store;
+package com.matteusmoreno.sendix.store.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
