@@ -1,0 +1,37 @@
+package com.matteusmoreno.sendix.product.service;
+
+import com.matteusmoreno.sendix.product.entity.Product;
+import com.matteusmoreno.sendix.product.repository.ProductRepository;
+import com.matteusmoreno.sendix.product.request.CreateProductRequest;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
+import java.util.UUID;
+
+@Service
+public class ProductService {
+
+    private final ProductRepository productRepository;
+
+    public ProductService(ProductRepository productRepository) {
+        this.productRepository = productRepository;
+    }
+
+    @Transactional
+    public Product createProduct(CreateProductRequest request) {
+        Product product = Product.builder()
+                .productId(UUID.randomUUID().toString())
+                .productName(request.productName())
+                .description(request.description())
+                .manufacturer(request.manufacturer())
+                .price(request.price())
+                .stockQuantity(request.stockQuantity())
+                .createdAt(LocalDateTime.now())
+                .updatedAt(null)
+                .deletedAt(null)
+                .active(true)
+                .build();
+        return productRepository.save(product);
+    }
+}
