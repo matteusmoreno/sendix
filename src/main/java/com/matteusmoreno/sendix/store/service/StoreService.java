@@ -2,6 +2,7 @@ package com.matteusmoreno.sendix.store.service;
 
 import com.matteusmoreno.sendix.address.entity.Address;
 import com.matteusmoreno.sendix.address.service.AddressService;
+import com.matteusmoreno.sendix.exception.StoreNotFoundException;
 import com.matteusmoreno.sendix.store.entity.Store;
 import com.matteusmoreno.sendix.store.repository.StoreRepository;
 import com.matteusmoreno.sendix.store.request.CreateStoreRequest;
@@ -53,6 +54,6 @@ public class StoreService {
 
     public Store getStoreById(String storeId) {
         return storeRepository.findById(storeId)
-                .orElseThrow(() -> new IllegalArgumentException("Store not found with ID: " + storeId));
+                .orElseThrow(() -> new StoreNotFoundException("Store not found with ID: " + storeId));
     }
 }
