@@ -1,5 +1,7 @@
 package com.matteusmoreno.sendix.product.service;
 
+import com.matteusmoreno.sendix.exception.ProductAlreadyDisabledException;
+import com.matteusmoreno.sendix.exception.ProductAlreadyEnabledException;
 import com.matteusmoreno.sendix.exception.ProductAlreadyExistsException;
 import com.matteusmoreno.sendix.exception.ProductNotFoundException;
 import com.matteusmoreno.sendix.product.entity.Product;
@@ -67,5 +69,33 @@ public class ProductService {
         log.info("Product updated: {}", product);
 
         return productRepository.save(product);
+    }
+
+    @Transactional
+    public void disableProductById(String productId) {
+        Product product = getProductById(productId);
+        if (product.getActive() == Boolean.FALSE) throw new ProductAlreadyDisabledException("Product is already disabled with ID: " + productId);
+
+        log.info("Disabling product: {}", product);
+
+        product.setActive(false);
+        product.setDeletedAt(LocalDateTime.now());
+
+        log.info("Product disabled: {}", product);
+        productRepository.save(product);
+    }
+
+    @Transactional
+    public void enableProductById(String productId) {
+        Product product = getProductById(productId);
+        if (product.getActive() == Boolean.TRUE) throw new ProductAlreadyEnabledException("Product is already enabled with ID: " + productId);
+
+        log.info("Enabling product: {}", product);
+
+        product.setActive(true);
+        product.setDeletedAt(null);
+
+        log.info("Product enabled: {}", product);
+        productRepository.save(product);
     }
 }

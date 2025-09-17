@@ -43,4 +43,16 @@ public class ProductController {
 
         return ResponseEntity.ok(new ProductDetailsResponse(product));
     }
+
+    @DeleteMapping("/disable/{id}")
+    public ResponseEntity<Void> disable(@PathVariable("id") String productId) {
+        productService.disableProductById(productId);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PatchMapping("/enable/{id}")
+    public ResponseEntity<Void> enable(@PathVariable("id") String productId) {
+        productService.enableProductById(productId);
+        return ResponseEntity.noContent().build();
+    }
 }

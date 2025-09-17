@@ -32,4 +32,14 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleProductAlreadyExistsException(ProductAlreadyExistsException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.CONFLICT);
     }
+
+    @ExceptionHandler(ProductAlreadyDisabledException.class)
+    public ResponseEntity<String> handleProductAlreadyDisabledException(ProductAlreadyDisabledException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ProductAlreadyEnabledException.class)
+    public ResponseEntity<String> handleProductAlreadyEnabledException(ProductAlreadyEnabledException ex) {
+        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
 }
