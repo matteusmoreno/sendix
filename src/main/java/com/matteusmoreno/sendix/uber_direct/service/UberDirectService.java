@@ -1,7 +1,7 @@
-package com.matteusmoreno.sendix.uber_direct;
+package com.matteusmoreno.sendix.uber_direct.service;
 
 import com.matteusmoreno.sendix.client.uber_direct.UberAuthClient;
-import com.matteusmoreno.sendix.client.uber_direct.request.UberDirectTokenRequest;
+import com.matteusmoreno.sendix.uber_direct.request.UberDirectTokenRequest;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

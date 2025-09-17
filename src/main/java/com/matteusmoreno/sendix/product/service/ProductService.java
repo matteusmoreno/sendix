@@ -3,6 +3,7 @@ package com.matteusmoreno.sendix.product.service;
 import com.matteusmoreno.sendix.product.entity.Product;
 import com.matteusmoreno.sendix.product.repository.ProductRepository;
 import com.matteusmoreno.sendix.product.request.CreateProductRequest;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,6 +11,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Service
+@Slf4j
 public class ProductService {
 
     private final ProductRepository productRepository;
@@ -32,6 +34,8 @@ public class ProductService {
                 .deletedAt(null)
                 .active(true)
                 .build();
+
+        log.info("Product created: {}", product);
         return productRepository.save(product);
     }
 }

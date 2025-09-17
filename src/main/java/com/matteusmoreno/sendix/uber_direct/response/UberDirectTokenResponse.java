@@ -1,4 +1,4 @@
-package com.matteusmoreno.sendix.client.uber_direct.response;
+package com.matteusmoreno.sendix.uber_direct.response;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

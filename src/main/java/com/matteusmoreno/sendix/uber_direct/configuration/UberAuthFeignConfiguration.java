@@ -1,4 +1,4 @@
-package com.matteusmoreno.sendix.client.uber_direct.configuration;
+package com.matteusmoreno.sendix.uber_direct.configuration;
 
 import feign.codec.Encoder;
 import feign.form.spring.SpringFormEncoder;

@@ -10,6 +10,7 @@ import com.matteusmoreno.sendix.customer.request.CreateCustomerRequest;
 import com.matteusmoreno.sendix.utils.Utils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -29,6 +30,7 @@ public class CustomerService {
         this.utils = utils;
     }
 
+    @Transactional
     public Customer createCustomer(CreateCustomerRequest request) {
         Address address = addressService.createAddressObject(request.zipCode(), request.addressNumber(), request.complement());
         log.info("Address created: {}", address);

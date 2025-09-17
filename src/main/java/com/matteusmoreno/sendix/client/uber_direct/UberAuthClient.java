@@ -1,8 +1,8 @@
 package com.matteusmoreno.sendix.client.uber_direct;
 
-import com.matteusmoreno.sendix.client.uber_direct.configuration.UberAuthFeignConfiguration;
-import com.matteusmoreno.sendix.client.uber_direct.request.UberDirectTokenRequest;
-import com.matteusmoreno.sendix.client.uber_direct.response.UberDirectTokenResponse;
+import com.matteusmoreno.sendix.uber_direct.configuration.UberAuthFeignConfiguration;
+import com.matteusmoreno.sendix.uber_direct.request.UberDirectTokenRequest;
+import com.matteusmoreno.sendix.uber_direct.response.UberDirectTokenResponse;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;

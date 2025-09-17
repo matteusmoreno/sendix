@@ -1,6 +1,6 @@
-package com.matteusmoreno.sendix.client.uber_direct.configuration;
+package com.matteusmoreno.sendix.uber_direct.configuration;
 
-import com.matteusmoreno.sendix.uber_direct.UberDirectService;
+import com.matteusmoreno.sendix.uber_direct.service.UberDirectService;
 import feign.RequestInterceptor;
 import org.springframework.context.annotation.Bean;
 

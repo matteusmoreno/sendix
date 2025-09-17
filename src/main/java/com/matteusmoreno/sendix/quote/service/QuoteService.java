@@ -8,7 +8,7 @@ import com.matteusmoreno.sendix.quote.request.CreateQuoteRequest;
 import com.matteusmoreno.sendix.quote.response.QuoteDetailsResponse;
 import com.matteusmoreno.sendix.store.entity.Store;
 import com.matteusmoreno.sendix.store.repository.StoreRepository;
-import com.matteusmoreno.sendix.uber_direct.UberDirectService;
+import com.matteusmoreno.sendix.uber_direct.service.UberDirectService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.matteusmoreno.sendix.client.uber_direct.request;
+package com.matteusmoreno.sendix.uber_direct.request;
 
 import feign.form.FormProperty;
 import lombok.AllArgsConstructor;

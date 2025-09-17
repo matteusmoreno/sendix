@@ -1,6 +1,6 @@
 package com.matteusmoreno.sendix.client.uber_direct;
 
-import com.matteusmoreno.sendix.client.uber_direct.configuration.UberApiFeignConfiguration;
+import com.matteusmoreno.sendix.uber_direct.configuration.UberApiFeignConfiguration;
 import com.matteusmoreno.sendix.quote.request.CreateQuoteRequest;
 import com.matteusmoreno.sendix.quote.response.QuoteDetailsResponse;
 import org.springframework.cloud.openfeign.FeignClient;
