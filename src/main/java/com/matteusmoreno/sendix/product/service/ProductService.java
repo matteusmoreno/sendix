@@ -37,6 +37,7 @@ public class ProductService {
                 .productCategory(request.productCategory().toUpperCase())
                 .price(request.price())
                 .stockQuantity(request.stockQuantity())
+                .imageUrl(request.imageUrl())
                 .createdAt(LocalDateTime.now())
                 .updatedAt(null)
                 .deletedAt(null)

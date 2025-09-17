@@ -22,6 +22,7 @@ public class Product {
     private String manufacturer;
     private BigDecimal price;
     private Integer stockQuantity;
+    private String imageUrl;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
     private LocalDateTime deletedAt;
