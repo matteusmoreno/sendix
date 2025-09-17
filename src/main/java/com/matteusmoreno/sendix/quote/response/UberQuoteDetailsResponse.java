@@ -1,6 +1,6 @@
 package com.matteusmoreno.sendix.quote.response;
 
-public record QuoteDetailsResponse(
+public record UberQuoteDetailsResponse(
         String kind,               // O tipo de objeto retornado, sempre será "delivery_quote".
         String id,                 // [MUITO IMPORTANTE] O ID único desta cotação (ex: "dqt_..."). Use-o para criar a entrega.
         String created,            // Data/hora (UTC) em que a cotação foi criada.
