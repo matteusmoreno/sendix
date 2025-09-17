@@ -6,10 +6,7 @@ import com.matteusmoreno.sendix.product.response.ProductDetailsResponse;
 import com.matteusmoreno.sendix.product.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
@@ -30,5 +27,12 @@ public class ProductController {
         URI uri = uriBuilder.path("/products/create/{id}").buildAndExpand(product.getProductId()).toUri();
 
         return ResponseEntity.created(uri).body(new ProductDetailsResponse(product));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductDetailsResponse> getById(@PathVariable("id") String productId) {
+        Product product = productService.getProductById(productId);
+
+        return ResponseEntity.ok(new ProductDetailsResponse(product));
     }
 }

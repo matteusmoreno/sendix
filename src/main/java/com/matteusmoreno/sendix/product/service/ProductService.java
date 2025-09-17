@@ -1,5 +1,6 @@
 package com.matteusmoreno.sendix.product.service;
 
+import com.matteusmoreno.sendix.exception.ProductNotFoundException;
 import com.matteusmoreno.sendix.product.entity.Product;
 import com.matteusmoreno.sendix.product.repository.ProductRepository;
 import com.matteusmoreno.sendix.product.request.CreateProductRequest;
@@ -37,5 +38,10 @@ public class ProductService {
 
         log.info("Product created: {}", product);
         return productRepository.save(product);
+    }
+
+    public Product getProductById(String productId) {
+        return productRepository.findById(productId)
+                .orElseThrow(() -> new ProductNotFoundException("Product not found with ID: " + productId));
     }
 }
