@@ -8,6 +8,7 @@ public record UpdateProductRequest(
         @NotBlank(message = "Product ID is required")
         String productId,
         String productName,
+        String productCategory,
         String description,
         String manufacturer,
         BigDecimal price) {

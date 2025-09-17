@@ -1,5 +1,6 @@
 package com.matteusmoreno.sendix.product.service;
 
+import com.matteusmoreno.sendix.exception.ProductAlreadyExistsException;
 import com.matteusmoreno.sendix.exception.ProductNotFoundException;
 import com.matteusmoreno.sendix.product.entity.Product;
 import com.matteusmoreno.sendix.product.repository.ProductRepository;
@@ -24,11 +25,16 @@ public class ProductService {
 
     @Transactional
     public Product createProduct(CreateProductRequest request) {
+        if (productRepository.existsByProductNameAndManufacturerIgnoreCase(request.productName(), request.manufacturer())) {
+            throw new ProductAlreadyExistsException("Product already exists with name: " + request.productName() + " and manufacturer: " + request.manufacturer());
+        }
+
         Product product = Product.builder()
                 .productId(UUID.randomUUID().toString())
                 .productName(request.productName())
                 .description(request.description())
-                .manufacturer(request.manufacturer())
+                .manufacturer(request.manufacturer().toUpperCase())
+                .productCategory(request.productCategory().toUpperCase())
                 .price(request.price())
                 .stockQuantity(request.stockQuantity())
                 .createdAt(LocalDateTime.now())

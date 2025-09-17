@@ -18,6 +18,7 @@ public class Product {
     private String productId;
     private String productName;
     private String description;
+    private String productCategory;
     private String manufacturer;
     private BigDecimal price;
     private Integer stockQuantity;
