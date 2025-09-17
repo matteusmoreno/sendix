@@ -4,6 +4,7 @@ import com.matteusmoreno.sendix.exception.ProductNotFoundException;
 import com.matteusmoreno.sendix.product.entity.Product;
 import com.matteusmoreno.sendix.product.repository.ProductRepository;
 import com.matteusmoreno.sendix.product.request.CreateProductRequest;
+import com.matteusmoreno.sendix.product.request.UpdateProductRequest;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,5 +44,21 @@ public class ProductService {
     public Product getProductById(String productId) {
         return productRepository.findById(productId)
                 .orElseThrow(() -> new ProductNotFoundException("Product not found with ID: " + productId));
+    }
+
+    @Transactional
+    public Product updateProduct(UpdateProductRequest request) {
+        Product product = getProductById(request.productId());
+        log.info("Updating product: {}", product);
+
+        if (request.productName() != null) product.setProductName(request.productName());
+        if (request.description() != null) product.setDescription(request.description());
+        if (request.manufacturer() != null) product.setManufacturer(request.manufacturer());
+        if (request.price() != null) product.setPrice(request.price());
+
+        product.setUpdatedAt(LocalDateTime.now());
+        log.info("Product updated: {}", product);
+
+        return productRepository.save(product);
     }
 }
