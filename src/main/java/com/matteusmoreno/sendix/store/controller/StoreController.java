@@ -5,11 +5,9 @@ import com.matteusmoreno.sendix.store.service.StoreService;
 import com.matteusmoreno.sendix.store.request.CreateStoreRequest;
 import com.matteusmoreno.sendix.store.response.StoreDetailsResponse;
 import jakarta.validation.Valid;
+import lombok.Getter;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
@@ -30,5 +28,12 @@ public class StoreController {
         URI uri = uriBuilder.path("/stores/create/{id}").buildAndExpand(store.getStoreId()).toUri();
 
         return ResponseEntity.created(uri).body(new StoreDetailsResponse(store));
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<StoreDetailsResponse> getStoreById(@PathVariable("id") String storeId) {
+        Store store = storeService.getStoreById(storeId);
+
+        return ResponseEntity.ok(new StoreDetailsResponse(store));
     }
 }

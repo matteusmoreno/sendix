@@ -50,4 +50,9 @@ public class StoreService {
 
         return storeRepository.save(store);
     }
+
+    public Store getStoreById(String storeId) {
+        return storeRepository.findById(storeId)
+                .orElseThrow(() -> new IllegalArgumentException("Store not found with ID: " + storeId));
+    }
 }
