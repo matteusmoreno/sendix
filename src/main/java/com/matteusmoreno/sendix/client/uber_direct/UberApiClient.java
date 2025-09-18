@@ -1,5 +1,7 @@
 package com.matteusmoreno.sendix.client.uber_direct;
 
+import com.matteusmoreno.sendix.delivery.request.UberCreateDeliveryRequest;
+import com.matteusmoreno.sendix.delivery.response.UberDeliveryDetailsResponse;
 import com.matteusmoreno.sendix.uber_direct.configuration.UberApiFeignConfiguration;
 import com.matteusmoreno.sendix.quote.request.CreateQuoteRequest;
 import com.matteusmoreno.sendix.quote.response.UberQuoteDetailsResponse;
@@ -13,4 +15,7 @@ public interface UberApiClient {
 
     @PostMapping("/v1/customers/{customerId}/delivery_quotes")
     UberQuoteDetailsResponse getQuote(@PathVariable String customerId, @RequestBody CreateQuoteRequest request);
+
+    @PostMapping("/v1/customers/{customerId}/deliveries")
+    UberDeliveryDetailsResponse createDelivery(@PathVariable String customerId, @RequestBody UberCreateDeliveryRequest request);
 }
